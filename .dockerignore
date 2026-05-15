@@ -1,0 +1,8 @@
+target
+.git
+.gitignore
+.idea
+.vscode
+
+# Local sqlite data
+/data/*.db

@@ -1,0 +1,16 @@
+services:
+  pet-clinic:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pet-clinic
+    env_file:
+      - .env
+    environment:
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS}
+    user: "${LOCAL_UID:-0}:${LOCAL_GID:-0}"
+    ports:
+      - "7272:8080"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

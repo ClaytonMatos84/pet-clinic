@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Env files
+.env
+!.env.example
+
+# SQLite local database
+data/*.db
