@@ -23,11 +23,14 @@ public class WebConfig implements WebMvcConfigurer {
 	public void addCorsMappings(CorsRegistry registry) {
 		var registration = registry.addMapping("/api/**")
 				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-				.allowedHeaders("*")
-				.allowCredentials(true);
+				.allowedHeaders("*");
 
 		if (this.allowedOrigins.length > 0) {
-			registration.allowedOrigins(this.allowedOrigins);
+			registration.allowedOrigins(this.allowedOrigins)
+					.allowCredentials(true);
+		} else {
+			registration.allowedOriginPatterns("*")
+					.allowCredentials(false);
 		}
 	}
 
